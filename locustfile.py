@@ -12,7 +12,7 @@ class ApiUser(HttpUser):
 
     @task
     def get_top_headlines(self):
-        country_code = random.choice(self.countries)
+        country_code = random.choice(self.countries).lower()
         url = f"https://newsapi.org/v2/top-headlines?country={country_code}&apiKey=8a95d6fc34c845a5a6467fea09f93bcd"
         response = self.client.get(url)
         if response.status_code == 200:
